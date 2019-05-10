@@ -94,9 +94,12 @@ const ColorPalette: React.FC<IProps> = ({
   useEffect(() => {
     global.current.ctx = canvasRef.current!.getContext('2d');
     draw();
+  }, [draw]);
+
+  useEffect(() => {
     window.addEventListener('mouseup', handleMouseUp);
     return () => window.removeEventListener('mouseup', handleMouseUp);
-  }, [draw]);
+  }, []);
 
   useEffect(() => {
     draw();

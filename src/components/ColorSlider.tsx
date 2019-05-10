@@ -79,10 +79,13 @@ const ColorSlider: React.FC<IProps> = ({ onChange = () => {} }: IProps) => {
 
   useEffect(() => {
     global.current.ctx = canvasRef.current!.getContext('2d');
-    window.addEventListener('mouseup', handleMouseUp);
     draw();
-    return () => window.removeEventListener('mouseup', handleMouseUp);
   }, [draw]);
+
+  useEffect(() => {
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => window.removeEventListener('mouseup', handleMouseUp);
+  }, []);
 
   return (
     <canvas
