@@ -53,7 +53,7 @@ const ColorPalette: React.FC<IProps> = ({
       ctx!.strokeStyle = 'white';
       ctx!.beginPath();
       ctx!.arc(selectedPosition.x, selectedPosition.y, 10, 0, 2 * Math.PI);
-      ctx!.lineWidth = 5;
+      ctx!.lineWidth = 3;
       ctx!.stroke();
       ctx!.closePath();
     }

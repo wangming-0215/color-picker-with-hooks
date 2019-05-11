@@ -14,7 +14,7 @@ const ColorSlider: React.FC<IProps> = ({ onChange = () => {} }: IProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const global = useRef<Global>({ ctx: null });
 
-  const [seletedHeight, setSeletedHeight] = useState<number>(0);
+  const [seletedHeight, setSeletedHeight] = useState<number | null>(null);
   const [mouseDown, setMouseDown] = useState<Boolean>(false);
 
   const draw = useCallback(() => {
@@ -39,10 +39,10 @@ const ColorSlider: React.FC<IProps> = ({ onChange = () => {} }: IProps) => {
     ctx!.fill();
     ctx!.closePath();
 
-    if (seletedHeight) {
+    if (typeof seletedHeight === 'number') {
       ctx!.beginPath();
       ctx!.strokeStyle = 'white';
-      ctx!.lineWidth = 5;
+      ctx!.lineWidth = 3;
       ctx!.rect(0, seletedHeight - 5, width, 10);
       ctx!.stroke();
       ctx!.closePath();
